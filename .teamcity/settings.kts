@@ -130,7 +130,7 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         }
         script {
             name = "Remove settings after deploy"
-            scriptContent = "rm -rf ~/settings"
+            scriptContent = "rm -rf %teamcity.agent.home.dir%/settings"
         }
     }
 })

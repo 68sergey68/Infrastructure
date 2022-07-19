@@ -114,6 +114,13 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             dockerImage = "registry.deckhouse.io/deckhouse/ce/install:stable"
             dockerRunParameters = """-v "%teamcity.agent.home.dir%/config.yml:/config.yml" -v "%teamcity.agent.home.dir%/.ssh/:/tmp/.ssh/" -v "%teamcity.agent.home.dir%/resources.yml:/resources.yml""""
         }
+        exec {
+            name = "Run Deckhouse with settings (1)"
+            path = "dhctl bootstrap --ssh-user=ubuntu --ssh-agent-private-keys=/tmp/.ssh/id_rsa --config=/config.yml --resources=/resources.yml"
+            dockerPull = true
+            dockerImage = "registry.deckhouse.io/deckhouse/ce/install:stable"
+            dockerRunParameters = """-v "%teamcity.agent.home.dir%/config.yml:/config.yml" -v "%teamcity.agent.home.dir%/.ssh/:/tmp/.ssh/" -v "%teamcity.agent.home.dir%/resources.yml:/resources.yml""""
+        }
         script {
             name = "Remove settings after deploy"
             scriptContent = "rm -rf ~/settings"

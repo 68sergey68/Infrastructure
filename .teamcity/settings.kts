@@ -84,8 +84,8 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         script {
             name = "Set Deckhouse settings"
             scriptContent = """
-                echo "%infra.secrets.deckhouse.config%" | tr -d '\r' > config.yml
-                echo "%infra.secrets.deckhouse.resources%" | tr -d '\r' > resources.yml
+                echo "%infra.secrets.deckhouse.config%" | > config.yml
+                echo "%infra.secrets.deckhouse.resources%" | > resources.yml
             """.trimIndent()
         }
         exec {

@@ -123,11 +123,9 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             dockerImage = "registry.deckhouse.io/deckhouse/ce/install:stable"
             dockerRunParameters = """-d sleep 60 -v "%teamcity.agent.home.dir%/config.yml:/config.yml" -v "%teamcity.agent.home.dir%/.ssh/:/tmp/.ssh/" -v "%teamcity.agent.home.dir%/resources.yml:/resources.yml""""
         }
-        exec {
-            name = "Run Deckhouse with settings (1) (1)"
-            path = "ls -a"
-            dockerPull = true
-            dockerImage = "registry.deckhouse.io/deckhouse/ce/install:stable"
+        script {
+            name = "Run Deckhouse with settings (CMD)"
+            scriptContent = """sudo docker run --name dockhouse -d  --pull=always -v "/opt/teamcity/buildAgent/config.yml:/config.yml" -v "/opt/teamcity/buildAgent/.ssh/:/tmp/.ssh/" -v "/opt/teamcity/buildAgent/resources.yml:/resources.yml" registry.deckhouse.io/deckhouse/ce/install:stable sleep 120"""
             dockerRunParameters = """-d sleep 60 -v "%teamcity.agent.home.dir%/config.yml:/config.yml" -v "%teamcity.agent.home.dir%/.ssh/:/tmp/.ssh/" -v "%teamcity.agent.home.dir%/resources.yml:/resources.yml""""
         }
         script {

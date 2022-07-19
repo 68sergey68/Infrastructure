@@ -72,6 +72,78 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
     name = "ClusterInstall"
     description = "Развертывание кластера k8s"
 
+    params {
+        param("infra.secrets.deckhouse.resources", """
+            apiVersion: deckhouse.io/v1
+            kind: NodeGroup
+            metadata:
+              name: worker
+            spec:
+              cloudInstances:
+                classReference:
+                  kind: YandexInstanceClass
+                  name: worker
+                maxPerZone: 1
+                minPerZone: 1
+                # возможно, захотите изменить
+                zones:
+                - ru-central1-a
+                - ru-central1-b
+              disruptions:
+                approvalMode: Automatic
+              nodeType: CloudEphemeral
+            ---
+            apiVersion: deckhouse.io/v1
+            kind: YandexInstanceClass
+            metadata:
+              name: worker
+            spec:
+              # возможно, захотите изменить
+              cores: 4
+              # возможно, захотите изменить
+              memory: 8192
+              # возможно, захотите изменить
+              diskSizeGB: 30
+            ---
+            apiVersion: deckhouse.io/v1
+            kind: IngressNginxController
+            metadata:
+              name: nginx
+            spec:
+              ingressClass: nginx
+              inlet: LoadBalancer
+              # описывает, на каких узлах будет находиться компонент. Лейбл node.deckhouse.io/group: <NODE_GROUP_NAME> устанавливается автоматически.
+              nodeSelector:
+                node.deckhouse.io/group: worker
+            ---
+            apiVersion: deckhouse.io/v1
+            kind: ClusterAuthorizationRule
+            metadata:
+              name: admin
+            spec:
+              # список учётных записей Kubernetes RBAC
+              subjects:
+              - kind: User
+                name: admin@nip.io
+              # предустановленный шаблон уровня доступа
+              accessLevel: SuperAdmin
+              # разрешить пользователю делать kubectl port-forward
+              portForwarding: true
+            ---
+            apiVersion: deckhouse.io/v1
+            kind: User
+            metadata:
+              name: admin
+            spec:
+              email: admin@nip.io
+              # это хэш пароля 02chw1yn44, сгенерированного сейчас
+              # сгенерируйте свой или используйте этот, но только для тестирования
+              # echo "02chw1yn44" | htpasswd -BinC 10 "" | cut -d: -f2
+              # возможно, захотите изменить
+              password: '${'$'}2a${'$'}10${'$'}4uppK0CaJ.4.PK7peTedu.xEF.ALB9fAmhDoSRjdrojTkbA9Ii6RG'
+        """.trimIndent())
+    }
+
     vcs {
         root(DslContext.settingsRoot)
     }

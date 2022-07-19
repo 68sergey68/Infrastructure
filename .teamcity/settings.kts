@@ -137,8 +137,8 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             scriptContent = "docker exec -i deckhouse dhctl bootstrap --ssh-user=ubuntu --ssh-agent-private-keys=/tmp/.ssh/id_rsa --config=/config.yml --resources=/resources.yml"
         }
         script {
-            name = "Start Deckhouse (1)"
-            scriptContent = "docker exec -i deckhouse dhctl bootstrap --ssh-user=ubuntu --ssh-agent-private-keys=/tmp/.ssh/id_rsa --config=/config.yml --resources=/resources.yml"
+            name = "Remove Deckhouse"
+            scriptContent = "docker exec -i deckhouse dhctl bootstrap-phase abort --ssh-user=ubuntu --ssh-agent-private-keys=/tmp/.ssh/id_rsa --config=/config.yml"
         }
         script {
             name = "Stop and rm deckhouse"

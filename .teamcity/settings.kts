@@ -105,7 +105,6 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             scriptContent = """
                 mkdir -p ~/settings/.ssh
                 echo "%infra.ssh.private_key%" | tr -d '\r' > ~/settings/.ssh/id_rsa
-                sudo chmod 600 ~/.ssh/id_rsa
             """.trimIndent()
         }
         exec {

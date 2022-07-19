@@ -68,4 +68,8 @@ object Infrastructure_Deckhouse : Project({
 object Infrastructure_Deckhouse_ClusterInstall : BuildType({
     name = "ClusterInstall"
     description = "Развертывание кластера k8s"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
 })

@@ -86,8 +86,7 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         script {
             name = "Set Deckhouse config.yml"
             scriptContent = """
-                mkdir -p settings
-                cat > settings/config.yml <<EOF 
+                cat > %teamcity.agent.home.dir%/config.yml <<EOF 
                 %infra.secrets.deckhouse.config%
                 EOF
             """.trimIndent()

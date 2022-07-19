@@ -85,10 +85,6 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
 
     steps {
         script {
-            name = "Remove Deckhouse"
-            scriptContent = "docker exec -i deckhouse dhctl bootstrap-phase abort --ssh-user=ubuntu --ssh-agent-private-keys=/tmp/.ssh/id_rsa --config=/config.yml"
-        }
-        script {
             name = "Set Deckhouse config.yml"
             scriptContent = """
                 cat > %teamcity.agent.home.dir%/config.yml <<EOF 
@@ -110,6 +106,10 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
                 mkdir %teamcity.agent.home.dir%/.ssh/
                 echo "%infra.ssh.private_key%" | tr -d '\r' > %teamcity.agent.home.dir%/.ssh/id_rsa
             """.trimIndent()
+        }
+        script {
+            name = "Remove Deckhouse"
+            scriptContent = "docker exec -i deckhouse dhctl bootstrap-phase abort --ssh-user=ubuntu --ssh-agent-private-keys=/tmp/.ssh/id_rsa --config=/config.yml"
         }
         exec {
             name = "Run Deckhouse with settings"

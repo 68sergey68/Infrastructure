@@ -61,10 +61,4 @@ object Infrastructure : Project({
 object Infrastructure_Deckhouse : Project({
     name = "Deckhouse"
     description = "Развертывание кластера k8s средствами Deckhouse"
-
-    template(Infrastructure_Deckhouse_ClusterInstall)
-})
-
-object Infrastructure_Deckhouse_ClusterInstall : Template({
-    name = "Cluster Install"
 })

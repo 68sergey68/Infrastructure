@@ -53,4 +53,12 @@ project {
 
 object Infrastructure : Project({
     name = "Infrastructure"
+
+    subProject(Infrastructure_Deckhouse)
+})
+
+
+object Infrastructure_Deckhouse : Project({
+    name = "Deckhouse"
+    description = "Развертывание кластера k8s средствами Deckhouse"
 })

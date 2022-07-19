@@ -107,10 +107,6 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
                 echo "%infra.ssh.private_key%" | tr -d '\r' > %teamcity.agent.home.dir%/.ssh/id_rsa
             """.trimIndent()
         }
-        script {
-            name = "Remove Deckhouse"
-            scriptContent = "docker exec -i deckhouse dhctl bootstrap-phase abort --ssh-user=ubuntu --ssh-agent-private-keys=/tmp/.ssh/id_rsa --config=/config.yml"
-        }
         exec {
             name = "Run Deckhouse with settings"
             enabled = false
@@ -135,6 +131,10 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         script {
             name = "Set per-s"
             scriptContent = "docker exec -i deckhouse chmod 600 /tmp/.ssh/id_rsa"
+        }
+        script {
+            name = "Remove Deckhouse"
+            scriptContent = "docker exec -i deckhouse dhctl bootstrap-phase abort --ssh-user=ubuntu --ssh-agent-private-keys=/tmp/.ssh/id_rsa --config=/config.yml"
         }
         script {
             name = "Start Deckhouse"

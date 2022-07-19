@@ -101,10 +101,7 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         }
         script {
             name = "Set ssh_key"
-            scriptContent = """
-                mkdir -p settings/.ssh/
-                echo "%infra.ssh.private_key%" | tr -d '\r' > settings/.ssh/id_rsa
-            """.trimIndent()
+            scriptContent = """echo "%infra.ssh.private_key%" | tr -d '\r' > %teamcity.agent.home.dir%/.ssh/id_rsa"""
         }
         exec {
             name = "Run Deckhouse with settings"

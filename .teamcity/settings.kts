@@ -118,6 +118,7 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         }
         dockerCommand {
             name = "Run Deckhouse with settings (1)"
+            enabled = false
             commandType = other {
                 subCommand = "run"
                 commandArgs = """--pull=always -v "${'$'}PWD/config.yml:/config.yml" -v "${'$'}HOME/.ssh/:/tmp/.ssh/" -v "${'$'}PWD/resources.yml:/resources.yml" -v "${'$'}PWD/dhctl-tmp:/tmp/dhctl" registry.deckhouse.io/deckhouse/ce/install:stable"""

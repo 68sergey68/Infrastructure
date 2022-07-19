@@ -117,6 +117,7 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         }
         exec {
             name = "Run Deckhouse with settings (1)"
+            enabled = false
             path = "ls -a"
             dockerPull = true
             dockerImage = "registry.deckhouse.io/deckhouse/ce/install:stable"

@@ -140,5 +140,13 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             name = "Remove settings after deploy"
             scriptContent = "rm -rf %teamcity.agent.home.dir%/settings"
         }
+        script {
+            name = "Stop and rm deckhouse"
+            executionMode = BuildStep.ExecutionMode.ALWAYS
+            scriptContent = """
+                docker stop deckhouse
+                docker rm deckhouse
+            """.trimIndent()
+        }
     }
 })

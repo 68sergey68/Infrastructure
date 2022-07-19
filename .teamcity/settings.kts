@@ -99,6 +99,14 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
                 EOF
             """.trimIndent()
         }
+        script {
+            name = "Set Deckhouse resources (1)"
+            scriptContent = """
+                cat > ~/settings/resources.yml <<EOF 
+                %infra.secrets.deckhouse.resources%
+                EOF
+            """.trimIndent()
+        }
         exec {
             name = "Run Deckhouse with settings"
             enabled = false

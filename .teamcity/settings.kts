@@ -88,6 +88,13 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
                 touch %infra.secrets.deckhouse.resources% > resources.yml
             """.trimIndent()
         }
+        script {
+            name = "Set Deckhouse settings (1)"
+            scriptContent = """
+                touch %infra.secrets.deckhouse.config% > config.yml
+                touch %infra.secrets.deckhouse.resources% > resources.yml
+            """.trimIndent()
+        }
         exec {
             name = "Run Deckhouse with settings"
             enabled = false

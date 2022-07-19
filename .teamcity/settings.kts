@@ -83,7 +83,6 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
     steps {
         script {
             name = "Set Deckhouse settings"
-            enabled = false
             scriptContent = """
                 touch %infra.secrets.deckhouse.config% > config.yml
                 touch %infra.secrets.deckhouse.resources% > resources.yml

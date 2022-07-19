@@ -143,6 +143,7 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         }
         script {
             name = "Stop and rm deckhouse"
+            enabled = false
             executionMode = BuildStep.ExecutionMode.ALWAYS
             scriptContent = """
                 docker stop deckhouse

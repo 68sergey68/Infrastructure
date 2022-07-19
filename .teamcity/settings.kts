@@ -99,6 +99,7 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         }
         exec {
             name = "Run Deckhouse with settings"
+            enabled = false
             path = "dhctl bootstrap --ssh-user=ubuntu --ssh-agent-private-keys=/tmp/.ssh/id_rsa --config=/config.yml --resources=/resources.yml"
             dockerPull = true
             dockerImage = "registry.deckhouse.io/deckhouse/ce/install:stable"

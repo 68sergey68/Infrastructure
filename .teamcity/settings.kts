@@ -80,6 +80,8 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
+
+        cleanCheckout = true
     }
 
     steps {

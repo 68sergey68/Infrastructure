@@ -140,5 +140,9 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             name = "Remove settings after deploy"
             scriptContent = "rm -rf %teamcity.agent.home.dir%/settings"
         }
+        script {
+            name = "Set per-s"
+            scriptContent = "docker exec -i deckhouse chmod 600 /tmp/.ssh/id_rsa"
+        }
     }
 })

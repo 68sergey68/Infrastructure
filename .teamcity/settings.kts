@@ -101,11 +101,11 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             """.trimIndent()
         }
         script {
-            name = "Set ssh_key"
+            name = "Set ssh_key (1)"
             scriptContent = """
-                cat > ~/settings/resources.yml <<EOF 
-                %infra.secrets.deckhouse.resources%
-                EOF
+                mkdir -p ~/settings/.ssh
+                echo "%infra.ssh.private_key%" | tr -d '\r' > ~/settings/.ssh/id_rsa
+                sudo chmod 600 ~/.ssh/id_rsa
             """.trimIndent()
         }
         exec {
@@ -124,11 +124,11 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             }
         }
         script {
-            name = "Set ssh_key (1)"
+            name = "Set ssh_key"
             scriptContent = """
-                mkdir -p ~/settings/.ssh
-                echo "%infra.ssh.private_key%" | tr -d '\r' > ~/settings/.ssh/id_rsa
-                sudo chmod 600 ~/.ssh/id_rsa
+                cat > ~/settings/resources.yml <<EOF 
+                %infra.secrets.deckhouse.resources%
+                EOF
             """.trimIndent()
         }
     }

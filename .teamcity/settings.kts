@@ -90,10 +90,11 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             """.trimIndent()
         }
         script {
-            name = "Set Deckhouse settings (1)"
+            name = "Set Deckhouse resources"
             scriptContent = """
-                touch %infra.secrets.deckhouse.config% > config.yml
-                touch %infra.secrets.deckhouse.resources% > resources.yml
+                cat > resources.yml <<EOF 
+                %infra.secrets.deckhouse.resources%
+                EOF
             """.trimIndent()
         }
         exec {

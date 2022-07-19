@@ -94,7 +94,7 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         script {
             name = "Set Deckhouse resources"
             scriptContent = """
-                cat > resources.yml <<EOF 
+                cat > ~/settings/resources.yml <<EOF 
                 %infra.secrets.deckhouse.resources%
                 EOF
             """.trimIndent()

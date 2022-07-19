@@ -1,5 +1,4 @@
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildSteps.dockerCommand
 import jetbrains.buildServer.configs.kotlin.buildSteps.exec
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.projectFeatures.buildReportTab
@@ -114,14 +113,6 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             dockerPull = true
             dockerImage = "registry.deckhouse.io/deckhouse/ce/install:stable"
             dockerRunParameters = """-v "%teamcity.agent.home.dir%/config.yml:/config.yml" -v "%teamcity.agent.home.dir%/.ssh/:/tmp/.ssh/" -v "%teamcity.agent.home.dir%/resources.yml:/resources.yml""""
-        }
-        dockerCommand {
-            name = "Run Deckhouse with settings (1)"
-            enabled = false
-            commandType = other {
-                subCommand = "run"
-                commandArgs = """--pull=always -v "${'$'}PWD/config.yml:/config.yml" -v "${'$'}HOME/.ssh/:/tmp/.ssh/" -v "${'$'}PWD/resources.yml:/resources.yml" -v "${'$'}PWD/dhctl-tmp:/tmp/dhctl" registry.deckhouse.io/deckhouse/ce/install:stable"""
-            }
         }
         script {
             name = "Remove settings after deploy"

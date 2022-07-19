@@ -91,5 +91,9 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
                 echo "%infra.secrets.deckhouse.resources%" | tr -d '\r' > resources.yml
             """.trimIndent()
         }
+        script {
+            name = "Remove setting after deploy"
+            scriptContent = "rm -rf resources.yml config.yml"
+        }
     }
 })

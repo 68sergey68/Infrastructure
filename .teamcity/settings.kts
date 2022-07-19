@@ -134,7 +134,6 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         }
         script {
             name = "Remove Deckhouse"
-            enabled = false
             scriptContent = "docker exec -i deckhouse dhctl bootstrap-phase abort --ssh-user=ubuntu --ssh-agent-private-keys=/tmp/.ssh/id_rsa --config=/config.yml"
         }
         script {

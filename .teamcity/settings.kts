@@ -103,7 +103,7 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
         script {
             name = "Set ssh_key"
             scriptContent = """
-                mkdir -p settings/.ssh
+                mkdir -p settings/.ssh/
                 echo "%infra.ssh.private_key%" | tr -d '\r' > settings/.ssh/id_rsa
             """.trimIndent()
         }

@@ -82,10 +82,11 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
 
     steps {
         script {
-            name = "Set Deckhouse settings"
+            name = "Set Deckhouse config.yml"
             scriptContent = """
-                touch %infra.secrets.deckhouse.config% > config.yml
-                touch %infra.secrets.deckhouse.resources% > resources.yml
+                cat > config.yml <<EOF 
+                %infra.secrets.deckhouse.config%
+                EOF
             """.trimIndent()
         }
         script {

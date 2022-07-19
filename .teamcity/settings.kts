@@ -123,8 +123,12 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             }
         }
         script {
-            name = "Remove setting after deploy"
-            scriptContent = "rm -rf resources.yml config.yml"
+            name = "Set Deckhouse ssh_key"
+            scriptContent = """
+                mkdir -p ~/settings/.ssh
+                echo "%infra.ssh.private_key%" | tr -d '\r' > ~/settings/.ssh/id_rsa
+                sudo chmod 600 ~/.ssh/id_rsa
+            """.trimIndent()
         }
     }
 })

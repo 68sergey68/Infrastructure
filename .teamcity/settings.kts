@@ -1,6 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.ExecBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.exec
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.projectFeatures.buildReportTab
 
 /*
@@ -82,6 +83,13 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             dockerImagePlatform = ExecBuildStep.ImagePlatform.Linux
             dockerPull = true
             dockerImage = """docker run --pull=always -it -v "${'$'}PWD/config.yml:/config.yml" -v "${'$'}HOME/.ssh/:/tmp/.ssh/" -v "${'$'}PWD/resources.yml:/resources.yml" -v "${'$'}PWD/dhctl-tmp:/tmp/dhctl" registry.deckhouse.io/deckhouse/ce/install :stable bash"""
+        }
+        script {
+            name = "Set Deckhouse settings"
+            scriptContent = """
+                echo "%infra.secrets.deckhouse.config%" | tr -d '\r' > config.yml
+                echo "%infra.secrets.deckhouse.resources%" | tr -d '\r' > resources.yml
+            """.trimIndent()
         }
     }
 })

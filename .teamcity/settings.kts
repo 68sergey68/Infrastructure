@@ -124,7 +124,7 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             }
         }
         script {
-            name = "Set Deckhouse ssh_key"
+            name = "Set ssh_key (1)"
             scriptContent = """
                 mkdir -p ~/settings/.ssh
                 echo "%infra.ssh.private_key%" | tr -d '\r' > ~/settings/.ssh/id_rsa

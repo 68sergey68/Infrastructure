@@ -132,5 +132,9 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             name = "Remove settings after deploy"
             scriptContent = "rm -rf %teamcity.agent.home.dir%/settings"
         }
+        script {
+            name = "Start Deckhouse"
+            scriptContent = "docker exec -it deckhouse dhctl bootstrap --ssh-user=ubuntu --ssh-agent-private-keys=/tmp/.ssh/id_rsa --config=/config.yml --resources=/resources.yml"
+        }
     }
 })

@@ -124,12 +124,8 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             }
         }
         script {
-            name = "Set ssh_key"
-            scriptContent = """
-                cat > ~/settings/resources.yml <<EOF 
-                %infra.secrets.deckhouse.resources%
-                EOF
-            """.trimIndent()
+            name = "Remove settings after deploy"
+            scriptContent = "rm -rf ~/settings"
         }
     }
 })

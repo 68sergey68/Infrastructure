@@ -3,7 +3,8 @@
   tasks:
     - name: Create vm
       ycc_vm:
-        token: "{{ yc_token }}"
+        auth:
+          token: "{{ yc_token }}"
         name: otus-kubmaster-infra-01
         login: ubuntu
         public_ssh_key: "{{ ssh_key }}"

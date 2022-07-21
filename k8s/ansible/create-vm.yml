@@ -39,7 +39,7 @@
         image_id: fd826dalmbcl81eo5nig
         disk_type: hdd
         disk_size: 20
-        subnet_id: e9bhbptv4h8qa56sbjlb
+        subnet_id: e2lof54cjtjs27926ie3
         assign_public_ip: false
         preemptible: true
         state: present
@@ -60,7 +60,7 @@
         image_id: fd826dalmbcl81eo5nig
         disk_type: hdd
         disk_size: 20
-        subnet_id: e9bhbptv4h8qa56sbjlb
+        subnet_id: b0c42dft85o5t3muvgdb
         assign_public_ip: false
         preemptible: true
         state: present

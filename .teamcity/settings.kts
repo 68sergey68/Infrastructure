@@ -163,4 +163,10 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
 
 object Infrastructure_KubernetesInfra : Project({
     name = "Kubernetes-Infra"
+
+    buildType(Infrastructure_KubernetesInfra_CreateVm)
+})
+
+object Infrastructure_KubernetesInfra_CreateVm : BuildType({
+    name = "Create VM"
 })

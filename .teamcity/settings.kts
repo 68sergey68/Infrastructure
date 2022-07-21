@@ -56,6 +56,7 @@ project {
 object Infrastructure : Project({
     name = "Infrastructure"
 
+    subProject(Infrastructure_KubernetesInfra)
     subProject(Infrastructure_Deckhouse)
 })
 
@@ -155,6 +156,48 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             name = "Remove settings after deploy"
             enabled = false
             scriptContent = "rm -rf %teamcity.agent.home.dir%/settings"
+        }
+    }
+})
+
+
+object Infrastructure_KubernetesInfra : Project({
+    name = "Kubernetes-Infra"
+
+    buildType(Infrastructure_KubernetesInfra_CreateVm)
+})
+
+object Infrastructure_KubernetesInfra_CreateVm : BuildType({
+    name = "Create VM"
+
+    params {
+        password("infra.secrets.sshkey", "zxx5a5969a5d4fc034eb74d8410758919c746b8242696b83740bd5830bcb318e3f9c115ed15f09b97387b505d52df32303b60b4f1b30adab1e98a7308b3f245893772e81854fb79e31b20aea6bbcbff754dc2e18ff800ab0b95f2af08e3ca322e27edb9c05ca56b3bcdac9228a28ee7093e41cdec47e84b66a92aaba825e37a456195bd96968a1ab2a9f6c99598120b158d4e59f15c2faf74b6d41954e1c6aa9a3cafb9a2613b4afa17dc797b35f56fbeb15e1fa2f3b491b6b1911f4c5acd51df0e36df0f7567fb46db6ffee16cee1212ea62295614e49adc03f690a454bde077a9127f0da4f35cce140bee3d039f1e0ca3dcf90ff9529ee7c96ed8256ba824771e20d1c32befe7dd0712afc2a3e1accdc54870a0bbd25d9dc43049de96e6dcbeea8406dd548446459e0eeada17424032832544de1e978c3f97acd105f7392b03e3b62ecadac9dfb88fb932989ef9a21623f4748eb491bb17afbb9cd69644349f3ddb907770220be0e0825b5b83f64beba0b4dea0f1146793c6927437fad473fe57cd845b98404f6364f66720d64eab0e0a7067a1cf0da6fa6a5962470d2718e1e6a85387bf1aa5ec90e054544350843b3f75fedb3ec6af2c3035122eceb31b868522431f5904b01de4b783d1ccc513131a601d264d203b3710a8650c219f0d54356e480d4464360f349e7c90c4a0ae61a0e5fb83a382b801d6cb535585d3c40eb1977175e802e4abfe33ae28bce17de96fc862e7165fab73ae45a2b3822458698d6821e98044bf231f5c031057a9e76592c92f4aa6dc18c6776e141ca5df10b35a")
+    }
+
+    vcs {
+        root(DslContext.settingsRoot, "-:.", """+:k8s\ansible => ansible""")
+
+        cleanCheckout = true
+    }
+
+    steps {
+        script {
+            name = "Prepare virtual env for ansible (pip3)"
+            scriptContent = """
+                #!/bin/bash
+                virtualenv --python=python3 venv
+                source venv/bin/activate
+                pip3 install -r requirements.txt
+            """.trimIndent()
+        }
+        script {
+            workingDir = "ansible"
+            scriptContent = """
+                #!/bin/bash
+                source ../venv/bin/activate
+                export ANSIBLE_HOST_KEY_CHECKING=False
+                ansible-playbook -i inventory.ini create-vm.yml --extra-vars "yc_token=%infra.secrets.token% ssh_key=%infra.secrets.sshkey%"
+            """.trimIndent()
         }
     }
 })

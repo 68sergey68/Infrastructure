@@ -15,7 +15,7 @@
         cores: 2
         memory: 4
         image_id: fd826dalmbcl81eo5nig
-        disk_type: nvme
+        disk_type: hdd
         disk_size: 30
 #        secondary_disks_spec: {}
         subnet_id: e9baq19sq6t7juet3n60

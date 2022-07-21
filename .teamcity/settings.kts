@@ -171,6 +171,6 @@ object Infrastructure_KubernetesInfra_CreateVm : BuildType({
     name = "Create VM"
 
     vcs {
-        root(DslContext.settingsRoot)
+        root(DslContext.settingsRoot, "-:.", """+:k8s\ansible => ansible""")
     }
 })

@@ -56,6 +56,7 @@ project {
 object Infrastructure : Project({
     name = "Infrastructure"
 
+    subProject(Infrastructure_KubernetesInfra)
     subProject(Infrastructure_Deckhouse)
 })
 
@@ -157,4 +158,9 @@ object Infrastructure_Deckhouse_ClusterInstall : BuildType({
             scriptContent = "rm -rf %teamcity.agent.home.dir%/settings"
         }
     }
+})
+
+
+object Infrastructure_KubernetesInfra : Project({
+    name = "Kubernetes-Infra"
 })

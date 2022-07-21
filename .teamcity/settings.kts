@@ -175,4 +175,17 @@ object Infrastructure_KubernetesInfra_CreateVm : BuildType({
 
         cleanCheckout = true
     }
+
+    steps {
+        script {
+            name = "Prepare virtual env for ansible (pip3)"
+            workingDir = "ansible"
+            scriptContent = """
+                #!/bin/bash
+                virtualenv --python=python3 venv
+                source venv/bin/activate
+                pip3 install -r requirements.txt
+            """.trimIndent()
+        }
+    }
 })

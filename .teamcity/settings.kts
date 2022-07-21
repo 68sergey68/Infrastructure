@@ -169,4 +169,8 @@ object Infrastructure_KubernetesInfra : Project({
 
 object Infrastructure_KubernetesInfra_CreateVm : BuildType({
     name = "Create VM"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
 })

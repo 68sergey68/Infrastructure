@@ -17,9 +17,9 @@
         image_id: fd826dalmbcl81eo5nig
         disk_type: nvme
         disk_size: 30
-        secondary_disks_spec: {}
+#        secondary_disks_spec: {}
         subnet_id: e9baq19sq6t7juet3n60
         assign_public_ip: false
         preemptible: true
-        metadata: {}
+#        metadata: {}
         state: present

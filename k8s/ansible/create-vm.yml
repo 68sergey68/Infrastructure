@@ -1,0 +1,25 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Create vm
+      ycc_vm:
+        token: {{ yc_token }}
+        name: otus-kubmaster-infra-01
+        login: ubuntu
+        public_ssh_key: {{ ssh_key }}
+        hostname: otus-kubmaster-infra-01
+        zone_id: ru-central1-a
+        folder_id: b1g8tnleii8cr09vlaa1
+        platform_id: "Intel Cascade Lake"
+        core_fraction: 100
+        cores: 2
+        memory: 4
+        image_id: fd826dalmbcl81eo5nig
+        disk_type: nvme
+        disk_size: 30
+        secondary_disks_spec: {}
+    subnet_id: e9baq19sq6t7juet3n60
+    assign_public_ip: false
+    preemptible: true
+    metadata: {}
+    state: present

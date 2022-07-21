@@ -172,5 +172,7 @@ object Infrastructure_KubernetesInfra_CreateVm : BuildType({
 
     vcs {
         root(DslContext.settingsRoot, "-:.", """+:k8s\ansible => ansible""")
+
+        cleanCheckout = true
     }
 })

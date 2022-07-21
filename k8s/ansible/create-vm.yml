@@ -18,8 +18,8 @@
         disk_type: nvme
         disk_size: 30
         secondary_disks_spec: {}
-    subnet_id: e9baq19sq6t7juet3n60
-    assign_public_ip: false
-    preemptible: true
-    metadata: {}
-    state: present
+        subnet_id: e9baq19sq6t7juet3n60
+        assign_public_ip: false
+        preemptible: true
+        metadata: {}
+        state: present

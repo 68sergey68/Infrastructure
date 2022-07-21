@@ -187,5 +187,14 @@ object Infrastructure_KubernetesInfra_CreateVm : BuildType({
                 pip3 install -r requirements.txt
             """.trimIndent()
         }
+        script {
+            workingDir = "ansible"
+            scriptContent = """
+                #!/bin/bash
+                source ../venv/bin/activate
+                export ANSIBLE_HOST_KEY_CHECKING=False
+                ansible-playbook -i inventory.ini create-vm.yml --extra-vars "yc_token=%infra.secrets.token% ssh_key=%infra.secrets.sshkey%"
+            """.trimIndent()
+        }
     }
 })

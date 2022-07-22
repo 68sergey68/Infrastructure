@@ -1,0 +1,66 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Create vm otus-kubworker-infra-01
+      ycc_vm:
+        auth:
+          token: "{{ yc_token }}"
+        name: otus-kubworker-infra-01
+        login: ubuntu
+        public_ssh_key: "{{ ssh_key }}"
+        hostname: otus-kubworker-infra-01
+        zone_id: ru-central1-a
+        folder_id: b1g8tnleii8cr09vlaa1
+        platform_id: "Intel Ice Lake"
+        core_fraction: 100
+        cores: 4
+        memory: 6
+        image_id: fd826dalmbcl81eo5nig
+        disk_type: hdd
+        disk_size: 30
+        subnet_id: e9bhbptv4h8qa56sbjlb
+        assign_public_ip: false
+        preemptible: true
+        state: present
+    - name: Create vm otus-kubworker-infra-02
+      ycc_vm:
+        auth:
+          token: "{{ yc_token }}"
+        name: otus-kubworker-infra-02
+        login: ubuntu
+        public_ssh_key: "{{ ssh_key }}"
+        hostname: otus-kubworker-infra-02
+        zone_id: ru-central1-b
+        folder_id: b1g8tnleii8cr09vlaa1
+        platform_id: "Intel Ice Lake"
+        core_fraction: 100
+        cores: 4
+        memory: 6
+        image_id: fd826dalmbcl81eo5nig
+        disk_type: hdd
+        disk_size: 30
+        subnet_id: e2lof54cjtjs27926ie3
+        assign_public_ip: false
+        preemptible: true
+        state: present
+    - name: Create vm otus-kubworker-infra-03
+      ycc_vm:
+        auth:
+          token: "{{ yc_token }}"
+        name: otus-kubworker-infra-03
+        login: ubuntu
+        public_ssh_key: "{{ ssh_key }}"
+        hostname: otus-kubworker-infra-03
+        zone_id: ru-central1-c
+        folder_id: b1g8tnleii8cr09vlaa1
+        platform_id: "Intel Ice Lake"
+        core_fraction: 100
+        cores: 4
+        memory: 6
+        image_id: fd826dalmbcl81eo5nig
+        disk_type: hdd
+        disk_size: 30
+        subnet_id: b0c42dft85o5t3muvgdb
+        assign_public_ip: false
+        preemptible: true
+        state: present

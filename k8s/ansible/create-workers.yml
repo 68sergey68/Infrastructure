@@ -43,14 +43,14 @@
         assign_public_ip: false
         preemptible: true
         state: present
-    - name: Create vm otus-kubworker-infra-03
+    - name: Create vm otus-kubworker-app-01
       ycc_vm:
         auth:
           token: "{{ yc_token }}"
-        name: otus-kubworker-infra-03
+        name: otus-kubworker-app-01
         login: ubuntu
         public_ssh_key: "{{ ssh_key }}"
-        hostname: otus-kubworker-infra-03
+        hostname: otus-kubworker-app-01
         zone_id: ru-central1-c
         folder_id: b1g8tnleii8cr09vlaa1
         platform_id: "Intel Ice Lake"

@@ -657,10 +657,7 @@ controller:
       podAnnotations: {}
       nodeSelector:
         kubernetes.io/os: linux
-      tolerations:
-        - effect: NoSchedule
-        key: node.cloudprovider.kubernetes.io/uninitialized
-        value: "true"
+      tolerations: []
       # -- Labels to be added to patch job resources
       labels: {}
       runAsUser: 2000

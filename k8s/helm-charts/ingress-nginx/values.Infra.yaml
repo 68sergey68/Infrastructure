@@ -221,7 +221,9 @@ controller:
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
   ##
   tolerations:
-    node.cloudprovider.kubernetes.io/uninitialized=true:NoSchedule
+    - effect: NoSchedule
+      key: node.cloudprovider.kubernetes.io/uninitialized
+      value: "true"
   #  - key: "key"
   #    operator: "Equal|Exists"
   #    value: "value"
@@ -656,7 +658,9 @@ controller:
       nodeSelector:
         kubernetes.io/os: linux
       tolerations:
-        node.cloudprovider.kubernetes.io/uninitialized=true:NoSchedule
+        - effect: NoSchedule
+        key: node.cloudprovider.kubernetes.io/uninitialized
+        value: "true"
       # -- Labels to be added to patch job resources
       labels: {}
       runAsUser: 2000
@@ -816,7 +820,9 @@ defaultBackend:
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
   ##
   tolerations:
-    node.cloudprovider.kubernetes.io/uninitialized=true:NoSchedule
+    - effect: NoSchedule
+      key: node.cloudprovider.kubernetes.io/uninitialized
+      value: "true"
   #  - key: "key"
   #    operator: "Equal|Exists"
   #    value: "value"

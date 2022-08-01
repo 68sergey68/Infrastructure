@@ -118,7 +118,8 @@ kubelet_logfiles_max_nr: 5
 kubelet_logfiles_max_size: 10Mi
 
 ## Support custom flags to be passed to kubelet
-kubelet_custom_flags: []
+kubelet_custom_flags:
+  - "--cloud-provider=external"
 
 ## Support custom flags to be passed to kubelet only on nodes, not masters
 kubelet_node_custom_flags: []

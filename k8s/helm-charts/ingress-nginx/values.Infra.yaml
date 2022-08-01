@@ -220,7 +220,8 @@ controller:
   # -- Node tolerations for server scheduling to nodes with taints
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
   ##
-  tolerations: []
+  tolerations:
+    node.cloudprovider.kubernetes.io/uninitialized=true:NoSchedule
   #  - key: "key"
   #    operator: "Equal|Exists"
   #    value: "value"
@@ -654,7 +655,8 @@ controller:
       podAnnotations: {}
       nodeSelector:
         kubernetes.io/os: linux
-      tolerations: []
+      tolerations:
+        node.cloudprovider.kubernetes.io/uninitialized=true:NoSchedule
       # -- Labels to be added to patch job resources
       labels: {}
       runAsUser: 2000
@@ -813,7 +815,8 @@ defaultBackend:
   # -- Node tolerations for server scheduling to nodes with taints
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
   ##
-  tolerations: []
+  tolerations:
+    node.cloudprovider.kubernetes.io/uninitialized=true:NoSchedule
   #  - key: "key"
   #    operator: "Equal|Exists"
   #    value: "value"

@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: sock-shop
+  annotations:
+    owner: "smarin"
+    otus.project: "https://github.com/68sergey68/Infrastructure"

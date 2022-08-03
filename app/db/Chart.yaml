@@ -1,4 +1,4 @@
 apiVersion: v1
-description: A Helm chart for Sock Shop
+description: A Helm chart for Sock Shop DBs
 name: databases
 version: 0.3.0

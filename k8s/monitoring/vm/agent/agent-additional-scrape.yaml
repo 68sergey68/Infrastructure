@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: additional-scrape-configs
+  namespace: monitoring
+stringData:
+  prometheus-additional.yaml: |
+      - job_name: rabbit
+        metrics_path: /metrics
+        scrape_interval: 30s
+        scrape_timeout: 20s
+        honor_labels: true
+        static_configs:
+          - targets: ['rabbitmq.rabbitmq:9090']
+            labels:
+              host: 'rabbitmq'
+

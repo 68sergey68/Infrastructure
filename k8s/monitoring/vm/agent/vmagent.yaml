@@ -1,5 +1,5 @@
 ---
-apiVersion: operator.victoriametrics.com/v1
+apiVersion: operator.victoriametrics.com/v1beta1
 kind: VMAgent
 metadata:
   name: vmagent
@@ -26,8 +26,6 @@ spec:
     limits:
       cpu: "500m"
       memory: "850Mi"
-  additionalArgs:
-    memory.allowedPercent: "40"
   vmAgentExternalLabelName: vmagent
   externalLabels:
     cluster: {}

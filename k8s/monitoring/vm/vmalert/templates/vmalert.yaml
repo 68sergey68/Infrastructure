@@ -1,0 +1,17 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAlert
+metadata:
+  name: vmalert
+  namespace: monitoring
+spec:
+  replicaCount: 1
+  serviceAccountName: {{ .Values.serviceAccount.name }}
+  securityContext:
+    {{- toYaml .Values.securityContext | nindent 4 }}
+  datasource:
+    url: {{ .Values.app.datasource.url }}
+  notifier:
+      url: {{ .Values.app.notifier.url }}
+  evaluationInterval: "30s"
+  ruleNamespaceSelector: {}
+  ruleSelector: {}

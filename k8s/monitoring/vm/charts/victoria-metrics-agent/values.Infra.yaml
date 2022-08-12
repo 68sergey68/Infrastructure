@@ -63,7 +63,7 @@ podDisruptionBudget:
 
 # WARN: need to specify at least one remote write url or one multi tenant url
 remoteWriteUrls:
-  - url: "http://vminsert-vmcluster:8480/insert/0/prometheus/"
+  - http://vminsert-vmcluster:8480/insert/0/prometheus
 # remoteWriteUrls:
 #   - http://vm-insert:8480/insert/0/prometheus
 #   - http://prometheus:8480/insert/0/prometheus

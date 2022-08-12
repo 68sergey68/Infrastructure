@@ -30,6 +30,6 @@ spec:
     memory.allowedPercent: "40"
   vmAgentExternalLabelName: vmagent
   externalLabels:
-    cluster: {}
+    cluster: cluster
   remoteWrite:
     - url: "http://vminsert-vmcluster:8480/insert/0/prometheus/"

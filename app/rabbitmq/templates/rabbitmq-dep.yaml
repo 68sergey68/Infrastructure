@@ -37,6 +37,11 @@ spec:
         ports:
         - containerPort: 9090
           name: exporter
+        env:
+        - name: RABBIT_URL
+          value: "http://127.0.0.1:5672"
+        - name: PUBLISH_PORT
+          value: "9090"
       nodeSelector:
         kubernetes.io/node-role: worker-infra
 

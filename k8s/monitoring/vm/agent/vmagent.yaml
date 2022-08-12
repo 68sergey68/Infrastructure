@@ -26,6 +26,10 @@ spec:
     limits:
       cpu: "500m"
       memory: "850Mi"
+  additionalArgs:
+    memory.allowedPercent: "40"
   vmAgentExternalLabelName: vmagent
+  externalLabels:
+    cluster: {}
   remoteWrite:
     - url: "http://vminsert-vmcluster:8480/insert/0/prometheus/"

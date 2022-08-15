@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  labels:
-    grafana_dashboard: "1"
-  name: {{ $.Release.Name }}-dashboards-part-1
-data:
-{{ tpl (.Files.Glob "dashboards/part-1/**.json").AsConfig $ | indent 2 }}

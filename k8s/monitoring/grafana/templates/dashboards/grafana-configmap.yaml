@@ -2,13 +2,13 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   labels:
-    app.monitoring.rts/name: {{ $.Chart.Name }}
-    app.monitoring.rts/version: {{ $.Chart.AppVersion }}
-    app.monitoring.rts/instance: {{ $.Release.Name }}
-    app.monitoring.rts/managed-by: {{ $.Release.Service }}
-    app.monitoring.rts/dashboard: "1"
+    app.monitoring./name: {{ $.Chart.Name }}
+    app.monitoring/version: {{ $.Chart.AppVersion }}
+    app.monitoring/instance: {{ $.Release.Name }}
+    app.monitoring/managed-by: {{ $.Release.Service }}
+    app.monitoring/dashboard: "1"
   name: {{ $.Release.Name }}-dashboards
   annotations:
-    k8s-sidecar-target-directory: "/tmp/sidecar/dashboards/infra"
+    k8s-sidecar-target-directory: "/tmp/sidecar/dashboards/general"
 data:
 {{ tpl (.Files.Glob "dashboards/**.json").AsConfig $ | indent 4 }}

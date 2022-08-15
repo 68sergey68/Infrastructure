@@ -483,6 +483,8 @@ lifecycleHooks: {}
 plugins: []
   # - digrich-bubblechart-panel
   # - grafana-clock-panel
+plugins:
+  - prometheus
 
 ## Configure grafana datasources
 ## ref: http://docs.grafana.org/administration/provisioning/#datasources

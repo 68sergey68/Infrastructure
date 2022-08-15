@@ -239,8 +239,7 @@ resources: {}
 ## Node labels for pod assignment
 ## ref: https://kubernetes.io/docs/user-guide/node-selection/
 #
-nodeSelector:
-  kubernetes.io/node-role: worker-infra
+nodeSelector: {}
 
 ## Tolerations for pod assignment
 ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -356,12 +355,7 @@ admin:
 # command:
 # - "sh"
 # - "/run.sh"
-command:
-- "setcap"
-- "'cap_net_bind_service=+ep'"
-- "/usr/sbin/grafana-server &&"
-- "sh"
-- "/run.sh"
+
 
 ## Use an alternate scheduler, e.g. "stork".
 ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/

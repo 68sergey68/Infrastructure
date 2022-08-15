@@ -7,8 +7,8 @@ metadata:
     app.monitoring.rts/instance: {{ $.Release.Name }}
     app.monitoring.rts/managed-by: {{ $.Release.Service }}
     app.monitoring.rts/dashboard: "1"
-  name: {{ $.Release.Name }}-44-dashboards
+  name: {{ $.Release.Name }}-dashboards
   annotations:
     k8s-sidecar-target-directory: "/tmp/sidecar/dashboards/infra"
 data:
-{{ tpl (.Files.Glob "dashboards/**.json").AsConfig $ | indent 2 }}
+{{ tpl (.Files.Glob "dashboards/**.json").AsConfig $ | indent 4 }}

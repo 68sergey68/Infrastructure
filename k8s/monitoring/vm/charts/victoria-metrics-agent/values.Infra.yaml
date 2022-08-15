@@ -566,3 +566,27 @@ extraScrapeConfigs:
       - targets: ['rabbitmq.rabbitmq:9090']
         labels:
           host: 'rabbitmq'
+  - job_name: app
+    metrics_path: /metrics
+    scrape_interval: 30s
+    scrape_timeout: 20s
+    honor_labels: true
+    static_configs:
+      - targets: ['orders.sock-shop:80']
+        labels:
+          host: 'orders'
+      - targets: ['user.sock-shop:80']
+        labels:
+          host: 'user'
+      - targets: ['carts.sock-shop:80']
+        labels:
+          host: 'carts'
+      - targets: ['payment.sock-shop:80']
+        labels:
+          host: 'payment'
+      - targets: ['shipping.sock-shop:80']
+        labels:
+          host: 'shipping'
+      - targets: ['catalogue.sock-shop:80']
+        labels:
+          host: 'catalogue'

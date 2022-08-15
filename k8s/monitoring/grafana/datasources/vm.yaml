@@ -11,8 +11,6 @@ stringData:
     datasources:
     - name: DS_PROMETHEUS
       type: datasource
-      pluginId: prometheus
-      pluginName: Prometheus
       url: http://vmselect-vmcluster-0.vmselect-vmcluster.monitoring:8481/select/0/prometheus/
       access: proxy
       isDefault: true

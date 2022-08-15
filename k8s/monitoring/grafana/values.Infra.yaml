@@ -95,9 +95,9 @@ testFramework:
   securityContext: {}
 
 securityContext:
-  runAsUser: 472
-  runAsGroup: 472
-  fsGroup: 472
+  runAsUser: 0
+  runAsGroup: 0
+  fsGroup: 0
 
 containerSecurityContext:
   {}
@@ -356,6 +356,12 @@ admin:
 # command:
 # - "sh"
 # - "/run.sh"
+command:
+- "setcap"
+- "'cap_net_bind_service=+ep'"
+- "/usr/sbin/grafana-server &&"
+- "sh"
+- "/run.sh"
 
 ## Use an alternate scheduler, e.g. "stork".
 ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/

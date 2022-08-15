@@ -11,6 +11,6 @@ stringData:
     datasources:
     - name: VM
       type: prometheus
-      url: http://vmselect-vmcluster.monitoring:8481/select/0/prometheus/
+      url: http://vmselect-vmcluster-0.vmselect-vmcluster.monitoring:8481/select/0/prometheus/
       access: proxy
       isDefault: true

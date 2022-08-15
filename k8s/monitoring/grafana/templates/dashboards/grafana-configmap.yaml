@@ -854,7 +854,7 @@ data:
               "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}[1m])) by (pod)",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{ pod }}",
+              "legendFormat": "{{` {{ pod }} `}}",
               "metric": "container_cpu",
               "refId": "A",
               "step": 240
@@ -936,7 +936,7 @@ data:
               "expr": "sum (container_memory_working_set_bytes{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}) by (pod)",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{ pod }}",
+              "legendFormat": "{{` {{ pod }} `}}",
               "metric": "",
               "refId": "A",
               "step": 240
@@ -1106,7 +1106,7 @@ data:
               "expr": "sum(container_fs_usage_bytes{image!=\"\",name=~\"^k8s_.*\",instance=~\"^$instance$\",namespace=~\"^$namespace$\"}) by (pod)",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{ pod }}",
+              "legendFormat": "{{` {{ pod }} `}}",
               "metric": "network",
               "refId": "A",
               "step": 240
@@ -1818,7 +1818,7 @@ data:
                     "expr": "sum (container_memory_working_set_bytes{namespace=\"sock-shop\"}) by (pod)",
                     "interval": "",
                     "intervalFactor": 2,
-                    "legendFormat": "{{ pod }}",
+                    "legendFormat": "{{` {{ pod }} `}}",
                     "metric": "",
                     "refId": "A",
                     "step": 4
@@ -1916,7 +1916,7 @@ data:
                     "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"sock-shop\"}[1m])) by (pod)",
                     "interval": "",
                     "intervalFactor": 2,
-                    "legendFormat": "{{ pod }}",
+                    "legendFormat": "{{` {{ pod }} `}}",
                     "metric": "container_cpu",
                     "refId": "A",
                     "step": 4

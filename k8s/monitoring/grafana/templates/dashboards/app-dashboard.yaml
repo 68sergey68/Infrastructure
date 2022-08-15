@@ -1,11 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
+namespace: monitoring
 metadata:
+  name: sock-shop-analytics-dashboard
   labels:
-    app.monitoring/dashboard: "1"
-  name: {{ $.Release.Name }}-sock-shop-analytics
-  annotations:
-    k8s-sidecar-target-directory: "/tmp/sidecar/dashboards/app"
+     grafana_dashboard: "1"
 data:
   sock-shop-analytics-dashboard.json: |
     {

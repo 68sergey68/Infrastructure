@@ -2,7 +2,7 @@ rbac:
   create: true
   ## Use an existing ClusterRole/Role (depending on rbac.namespaced false/true)
   # useExistingRole: name-of-some-(cluster)role
-  pspEnabled: true
+  pspEnabled: false
   pspUseAppArmor: true
   namespaced: false
   extraRoleRules: []
@@ -95,9 +95,9 @@ testFramework:
   securityContext: {}
 
 securityContext:
-  runAsUser: 0
-  runAsGroup: 0
-  fsGroup: 0
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
 
 containerSecurityContext:
   {}

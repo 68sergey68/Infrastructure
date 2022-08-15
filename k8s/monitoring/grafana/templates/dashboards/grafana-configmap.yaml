@@ -5,4 +5,4 @@ metadata:
   labels:
      grafana_dashboard: "1"
 data:
-{{ tpl (.Files.Glob "dashboards/**.json").AsConfig $ | indent 4 }}
+{{ tpl (.Files.Glob "dashboards/**.json").AsConfig $ | indent 2 }}

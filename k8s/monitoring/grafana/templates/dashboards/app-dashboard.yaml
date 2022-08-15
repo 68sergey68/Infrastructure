@@ -5,7 +5,7 @@ metadata:
   labels:
      grafana_dashboard: "1"
 data:
-  sock-shop-analytics-dashboard.json: |
+  sock-shop-analytics-dashboard.json: |-
     {
       "overwrite": true,
       "inputs": [

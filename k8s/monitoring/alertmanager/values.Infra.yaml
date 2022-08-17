@@ -65,7 +65,7 @@ statefulSet:
   annotations: {}
 
 persistence:
-  enabled: true
+  enabled: false
   ## Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -98,10 +98,6 @@ config:
 
     - match:
         subsystem: monitoring
-      receiver: 'default-receiver'
-
-    - match:
-        subsystem: rabbitmq
       receiver: 'default-receiver'
 
 templates: {}

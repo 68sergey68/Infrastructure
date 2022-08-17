@@ -201,16 +201,16 @@ server:
   config:
     alerts:
       groups:
-      - name: HighErrorRate
-        rules:
-        - alert: HighErrorRate
-          expr: rate(request_duration_seconds_count{status_code="500"}[5m]) > 1
-          for: 5m
-          labels:
-            severity: slack
-          annotations:
-            summary: "High HTTP 500 error rates"
-            description: "Rate of HTTP 500 errors per 5 minutes: {{ $value }}"
+        - name: HighErrorRate
+          rules:
+          - alert: HighErrorRate
+            expr: rate(request_duration_seconds_count{status_code="500"}[5m]) > 1
+            for: 5m
+            labels:
+              severity: slack
+            annotations:
+              summary: "High HTTP 500 error rates"
+              description: "Rate of HTTP 500 errors per 5 minutes: {{ $value }}"
 
 serviceMonitor:
   enabled: false

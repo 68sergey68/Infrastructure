@@ -35,6 +35,5 @@ spec:
               - SETUID
               - DAC_OVERRIDE
           readOnlyRootFilesystem: false
-      nodeSelector:
-        kubernetes.io/node-role: worker-infra
+      nodeSelector: {}
 

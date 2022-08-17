@@ -8,7 +8,7 @@ global:
 rabbitmq:
     image:
         repo: rabbitmq
-        tag: 3.6.8
+        tag: 3.8.23
     resources:
         requests:
             memory: 256Mi

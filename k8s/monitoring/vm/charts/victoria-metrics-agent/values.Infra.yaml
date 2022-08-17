@@ -563,7 +563,7 @@ extraScrapeConfigs:
     scrape_timeout: 20s
     honor_labels: true
     static_configs:
-      - targets: ['rabbitmq.rabbitmq:9090']
+      - targets: ['rabbitmq.rabbitmq:15692']
         labels:
           host: 'rabbitmq'
   - job_name: app

@@ -268,7 +268,7 @@ alertmanager:
       kubernetes.io/ingress.class: nginx
     #   kubernetes.io/tls-acme: 'true'
     extraLabels: {}
-    hosts: []
+    hosts:
     - name: alertmanager.ip-smarin.ru
       path: /
       port: web

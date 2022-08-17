@@ -10,11 +10,11 @@ masterService: ""
 # These will be set as environment variables. E.g. node.master=true
 roles:
   master: "true"
-  ingest: "true"
-  data: "true"
+  ingest: "false"
+  data: "false"
 
-replicas: 3
-minimumMasterNodes: 2
+replicas: 1
+minimumMasterNodes: 1
 
 esMajorVersion: ""
 

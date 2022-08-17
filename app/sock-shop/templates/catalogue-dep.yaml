@@ -25,7 +25,7 @@ spec:
         command: ["/app"]
         args:
         - -port={{ .Values.catalogue.containerPort }}
-        - -DSN=catalogue_user:default_password@tcp(catalogue-db.db.svc.cluster.local:3306)/socksdb
+        - -DSN=catalogue_user:default_password@tcp(catalogue-db.sock-shop.svc.cluster.local:3306)/socksdb
         {{- if .Values.zipkin.enabled }}
         env:
          - name: ZIPKIN

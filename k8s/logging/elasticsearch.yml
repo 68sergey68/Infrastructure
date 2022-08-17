@@ -5,7 +5,7 @@ metadata:
   name: elasticsearch
   labels:
     name: elasticsearch
-  namespace: kube-system
+  namespace: logging
 spec:
   replicas: 1
   selector:
@@ -31,7 +31,7 @@ metadata:
   name: elasticsearch
   labels:
     name: elasticsearch
-  namespace: kube-system
+  namespace: logging
 spec:
   ports:
   - port: 9200

@@ -6,7 +6,7 @@ metadata:
   labels:
     tier: monitoring
     name: fluentd
-  namespace: kube-system
+  namespace: logging
 spec:
   selector:
     matchLabels:

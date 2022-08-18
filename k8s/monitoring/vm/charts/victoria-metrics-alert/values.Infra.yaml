@@ -204,7 +204,7 @@ server:
         - name: HighErrorRate
           rules:
           - alert: HighErrorRate
-            expr: rate(request_duration_seconds_count{status_code="500"}[5m]) > 1
+            expr: rate(request_duration_seconds_count{status_code="200"}[5m]) > 1
             for: 5m
             labels:
               severity: slack

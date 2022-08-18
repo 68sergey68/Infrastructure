@@ -10,7 +10,7 @@ replicas: 1
 # syntax here
 extraEnvs:
   - name: "NODE_OPTIONS"
-    value: "--max-old-space-size=1800"
+    value: "--max-old-space-size=2800"
 #  - name: MY_ENVIRONMENT_VAR
 #    value: the_value_goes_here
 
@@ -49,10 +49,9 @@ healthCheckPath: "/app/kibana"
 
 # Allows you to add any config files in /usr/share/kibana/config/
 # such as kibana.yml
-kibanaConfig: {}
-#   kibana.yml: |
-#     key:
-#       nestedkey: value
+kibanaConfig:
+   kibana.yml: |
+     elasticsearch.requestTimeout: 90000
 
 # If Pod Security Policy in use it may be required to specify security context as well as service account
 

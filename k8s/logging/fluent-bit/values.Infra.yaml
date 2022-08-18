@@ -206,7 +206,7 @@ config:
     [INPUT]
         Name tail
         Path /var/log/containers/*.log
-        Exclude_Path /var/log/containers/*_ingress-nginx*.log,/var/log/containers/*_sock-shop_*.log,/var/log/containers/*_monitoring_*.log,/var/log/containers/*_logging_*.log
+        Exclude_Path /var/log/containers/*_ingress-nginx*.log,/var/log/containers/*_logging_*.log
         Tag kube.*
         Mem_Buf_Limit 5MB
         Skip_Long_Lines On

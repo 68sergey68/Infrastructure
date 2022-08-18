@@ -31,7 +31,5 @@ spec:
                 name: {{ $fullName }}
                 port:
                   number: {{ $servicePort }}
-              serviceName: {{ $fullName }}
-              servicePort: {{ $servicePort }}
   {{- end }}
 {{- end }}

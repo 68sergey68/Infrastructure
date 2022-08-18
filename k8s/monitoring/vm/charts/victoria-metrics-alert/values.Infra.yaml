@@ -78,7 +78,7 @@ server:
 
   notifier:
     alertmanager:
-      url: "http://alertmanager:9093"
+      url: "http://alertmanager-alertmanager:9093"
 
   extraArgs:
     envflag.enable: "true"
@@ -204,8 +204,8 @@ server:
         - name: HighErrorRate
           rules:
           - alert: HighErrorRate
-            expr: rate(request_duration_seconds_count{status_code="200"}[5m]) > 1
-            for: 5m
+            expr: rate(request_duration_seconds_count{status_code="200"}[1m]) > 1
+            for: 1m
             labels:
               severity: slack
             annotations:

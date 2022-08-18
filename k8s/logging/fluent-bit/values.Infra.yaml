@@ -251,7 +251,7 @@ config:
     [OUTPUT]
         Name es
         Match kube-nginx.*
-        Host elasticsearch-master.logging.svc.cluster.local
+        Host elasticsearch-master
         Port 9200
         Logstash_Format On
         Logstash_Prefix ingress-nginx-otus
@@ -262,7 +262,7 @@ config:
     [OUTPUT]
         Name es
         Match kube.*
-        Host elasticsearch-master.logging.svc.cluster.local
+        Host elasticsearch-master
         Port 9200
         Logstash_Format On
         Logstash_Prefix k8s_otus_cluster

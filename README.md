@@ -49,7 +49,7 @@
 
 
 |ClusterName| k8s version | Kubespray | Ingress-Nginx LB | CRI | CNI |
-|--|--|--|--|--|--|--|--|
+|--|--|--|--|--|--|
 | k8s-otus | v1.22.12 | 2.19.0 | 51.250.35.133 | containerd://1.6.6 | calico |
 
 [Token для авторизации в k8s-dashboard](eyJhbGciOiJSUzI1NiIsImtpZCI6IkRBNW5VWG9VLXdPRERhTXBJczY2MEd2NkZMcWVmUC02aENBdVhlOFRHWGsifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkYXNoYm9hcmQtZ3Vlc3QtdG9rZW4taDQ2NjQiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGFzaGJvYXJkLWd1ZXN0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiZGNjZDU5NDUtM2FkYi00MDUyLTgyODgtN2YwOGE4YzE5YzAyIiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmVybmV0ZXMtZGFzaGJvYXJkOmRhc2hib2FyZC1ndWVzdCJ9.cSICfEzg-i5FshzWCMwoJcR50n5ekvJTC2bjf5_K4hBIY4F84O8WuPuswl2KJkmpmUrCl-2ur-P_0jT9l63eVffTGFu1b6-Zp9tmXYTKuRC8WVheO4kbnLBB8JQViz1Vk7YAGDE_bCBN5_T-2bMOHWbWj11SzwiPBuQLlhgm2ZAXQmKd1oRXJmnZ4NcIs77ejkdtXpp1cXLxtMB6wHcrdfvGKlhEBfX0OfYyifKlLmIhBzaMapdM7Q9pncyDFMociSMVV4Hx33YZo-99nxt99uw96fzY7G2uA1WlUd8i3_knZWUs7a9tmd6ZX09bbqrZ9Tauil9CtRVOfn4lX2jtlQ)

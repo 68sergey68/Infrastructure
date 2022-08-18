@@ -10,8 +10,8 @@ masterService: ""
 # These will be set as environment variables. E.g. node.master=true
 roles:
   master: "true"
-  ingest: "false"
-  data: "false"
+  ingest: "true"
+  data: "true"
 
 replicas: 1
 minimumMasterNodes: 1
